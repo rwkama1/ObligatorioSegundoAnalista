@@ -1,0 +1,1145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SerializarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="tns:Cliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Cliente">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Usuarios">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Targeta" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Usuarios">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Ndoc" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomUsu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contraseña" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SerializarClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SerializarClienteResult" type="tns:Cliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SerializarAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="admin" type="tns:Administrador" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Administrador">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Usuarios">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Generavuelos" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SerializarAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SerializarAdminResult" type="tns:Administrador" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaAeropuerto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aero" type="tns:Aeropuerto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Aeropuerto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodAero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomAero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ciudad" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AltaAeropuertoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BuscarAeropuerto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarAeropuertoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarAeropuertoResult" type="tns:Aeropuerto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarAeropuerto">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarAeropuertoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarAeropuertoResult" type="tns:ArrayOfAeropuerto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAeropuerto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Aeropuerto" nillable="true" type="tns:Aeropuerto" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BajaAeropuerto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aero" type="tns:Aeropuerto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaAeropuertoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ModificarAero">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aerom" type="tns:Aeropuerto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarAeroResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarAeropuertoCiudadPartida">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarAeropuertoCiudadPartidaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarAeropuertoCiudadPartidaResult" type="tns:ArrayOfAeropuerto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaLineas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lineas" type="tns:LineasAereas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LineasAereas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SiglaLinea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DirLinea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefonos" type="tns:ArrayOfTelLineas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTelLineas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TelLineas" nillable="true" type="tns:TelLineas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TelLineas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UnTel" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AltaLineasResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BuscarLineas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sigla" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarLineasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarLineasResult" type="tns:LineasAereas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarLineas">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarLineasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarLineasResult" type="tns:ArrayOfLineasAereas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLineasAereas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineasAereas" nillable="true" type="tns:LineasAereas" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BajaLineas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="linea" type="tns:LineasAereas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaLineasResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ModificarLineas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lineam" type="tns:LineasAereas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarLineasResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AltaVuelos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vuelo" type="tns:Vuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Vuelos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodVuelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Asientos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaHora" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Linea" type="tns:LineasAereas" />
+          <s:element minOccurs="0" maxOccurs="1" name="Aeropuertosalida" type="tns:Aeropuerto" />
+          <s:element minOccurs="0" maxOccurs="1" name="Aeropuertollegada" type="tns:Aeropuerto" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reservas" type="tns:ArrayOfReservas" />
+          <s:element minOccurs="0" maxOccurs="1" name="SiglaLinea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodAeropuertoSalida" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodAeropuertoLlegada" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CantReservas" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfReservas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Reservas" nillable="true" type="tns:Reservas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Reservas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UnCliente" type="tns:Cliente" />
+          <s:element minOccurs="1" maxOccurs="1" name="Asiento" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AltaVuelosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BuscarVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarVueloResult" type="tns:Vuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarVuelo">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarVueloResult" type="tns:ArrayOfVuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVuelos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vuelos" nillable="true" type="tns:Vuelos" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BajaVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vuelob" type="tns:Vuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaVueloResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ModificarVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vuelom" type="tns:Vuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarVueloResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Reserva">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reserva" type="tns:Vuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReservaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListAeroPartidados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ae" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListAeroPartidadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAeroPartidadosResult" type="tns:ArrayOfVuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Logueo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pUsu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogueoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogueoResult" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usu" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaUsuarioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BajaUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usub" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaUsuarioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ModificarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usum" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarUsuarioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BuscarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ndoc" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarUsuarioResult" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Listavuelosxml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cli" type="tns:Cliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListavuelosxmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListavuelosxmlResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SerializarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:SerializarCliente" />
+  </wsdl:message>
+  <wsdl:message name="SerializarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:SerializarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SerializarAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:SerializarAdmin" />
+  </wsdl:message>
+  <wsdl:message name="SerializarAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:SerializarAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaAeropuertoSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaAeropuerto" />
+  </wsdl:message>
+  <wsdl:message name="AltaAeropuertoSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaAeropuertoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarAeropuertoSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarAeropuerto" />
+  </wsdl:message>
+  <wsdl:message name="BuscarAeropuertoSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarAeropuertoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarAeropuertoSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarAeropuerto" />
+  </wsdl:message>
+  <wsdl:message name="ListarAeropuertoSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarAeropuertoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaAeropuertoSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaAeropuerto" />
+  </wsdl:message>
+  <wsdl:message name="BajaAeropuertoSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaAeropuertoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarAeroSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarAero" />
+  </wsdl:message>
+  <wsdl:message name="ModificarAeroSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarAeroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarAeropuertoCiudadPartidaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarAeropuertoCiudadPartida" />
+  </wsdl:message>
+  <wsdl:message name="ListarAeropuertoCiudadPartidaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarAeropuertoCiudadPartidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaLineasSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaLineas" />
+  </wsdl:message>
+  <wsdl:message name="AltaLineasSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaLineasResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarLineasSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarLineas" />
+  </wsdl:message>
+  <wsdl:message name="BuscarLineasSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarLineasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarLineasSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarLineas" />
+  </wsdl:message>
+  <wsdl:message name="ListarLineasSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarLineasResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaLineasSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaLineas" />
+  </wsdl:message>
+  <wsdl:message name="BajaLineasSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaLineasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarLineasSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarLineas" />
+  </wsdl:message>
+  <wsdl:message name="ModificarLineasSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarLineasResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaVuelosSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaVuelos" />
+  </wsdl:message>
+  <wsdl:message name="AltaVuelosSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaVuelosResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarVuelo" />
+  </wsdl:message>
+  <wsdl:message name="BuscarVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarVuelo" />
+  </wsdl:message>
+  <wsdl:message name="ListarVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaVuelo" />
+  </wsdl:message>
+  <wsdl:message name="BajaVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarVuelo" />
+  </wsdl:message>
+  <wsdl:message name="ModificarVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReservaSoapIn">
+    <wsdl:part name="parameters" element="tns:Reserva" />
+  </wsdl:message>
+  <wsdl:message name="ReservaSoapOut">
+    <wsdl:part name="parameters" element="tns:ReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListAeroPartidadosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAeroPartidados" />
+  </wsdl:message>
+  <wsdl:message name="ListAeroPartidadosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAeroPartidadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogueoSoapIn">
+    <wsdl:part name="parameters" element="tns:Logueo" />
+  </wsdl:message>
+  <wsdl:message name="LogueoSoapOut">
+    <wsdl:part name="parameters" element="tns:LogueoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AltaUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaUsuario" />
+  </wsdl:message>
+  <wsdl:message name="BajaUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ModificarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="BuscarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListavuelosxmlSoapIn">
+    <wsdl:part name="parameters" element="tns:Listavuelosxml" />
+  </wsdl:message>
+  <wsdl:message name="ListavuelosxmlSoapOut">
+    <wsdl:part name="parameters" element="tns:ListavuelosxmlResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="SerializarCliente">
+      <wsdl:input message="tns:SerializarClienteSoapIn" />
+      <wsdl:output message="tns:SerializarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SerializarAdmin">
+      <wsdl:input message="tns:SerializarAdminSoapIn" />
+      <wsdl:output message="tns:SerializarAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaAeropuerto">
+      <wsdl:input message="tns:AltaAeropuertoSoapIn" />
+      <wsdl:output message="tns:AltaAeropuertoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAeropuerto">
+      <wsdl:input message="tns:BuscarAeropuertoSoapIn" />
+      <wsdl:output message="tns:BuscarAeropuertoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAeropuerto">
+      <wsdl:input message="tns:ListarAeropuertoSoapIn" />
+      <wsdl:output message="tns:ListarAeropuertoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaAeropuerto">
+      <wsdl:input message="tns:BajaAeropuertoSoapIn" />
+      <wsdl:output message="tns:BajaAeropuertoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAero">
+      <wsdl:input message="tns:ModificarAeroSoapIn" />
+      <wsdl:output message="tns:ModificarAeroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAeropuertoCiudadPartida">
+      <wsdl:input message="tns:ListarAeropuertoCiudadPartidaSoapIn" />
+      <wsdl:output message="tns:ListarAeropuertoCiudadPartidaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaLineas">
+      <wsdl:input message="tns:AltaLineasSoapIn" />
+      <wsdl:output message="tns:AltaLineasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarLineas">
+      <wsdl:input message="tns:BuscarLineasSoapIn" />
+      <wsdl:output message="tns:BuscarLineasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarLineas">
+      <wsdl:input message="tns:ListarLineasSoapIn" />
+      <wsdl:output message="tns:ListarLineasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaLineas">
+      <wsdl:input message="tns:BajaLineasSoapIn" />
+      <wsdl:output message="tns:BajaLineasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarLineas">
+      <wsdl:input message="tns:ModificarLineasSoapIn" />
+      <wsdl:output message="tns:ModificarLineasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaVuelos">
+      <wsdl:input message="tns:AltaVuelosSoapIn" />
+      <wsdl:output message="tns:AltaVuelosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarVuelo">
+      <wsdl:input message="tns:BuscarVueloSoapIn" />
+      <wsdl:output message="tns:BuscarVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarVuelo">
+      <wsdl:input message="tns:ListarVueloSoapIn" />
+      <wsdl:output message="tns:ListarVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaVuelo">
+      <wsdl:input message="tns:BajaVueloSoapIn" />
+      <wsdl:output message="tns:BajaVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarVuelo">
+      <wsdl:input message="tns:ModificarVueloSoapIn" />
+      <wsdl:output message="tns:ModificarVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Reserva">
+      <wsdl:input message="tns:ReservaSoapIn" />
+      <wsdl:output message="tns:ReservaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListAeroPartidados">
+      <wsdl:input message="tns:ListAeroPartidadosSoapIn" />
+      <wsdl:output message="tns:ListAeroPartidadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logueo">
+      <wsdl:input message="tns:LogueoSoapIn" />
+      <wsdl:output message="tns:LogueoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaUsuario">
+      <wsdl:input message="tns:AltaUsuarioSoapIn" />
+      <wsdl:output message="tns:AltaUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaUsuario">
+      <wsdl:input message="tns:BajaUsuarioSoapIn" />
+      <wsdl:output message="tns:BajaUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarUsuario">
+      <wsdl:input message="tns:ModificarUsuarioSoapIn" />
+      <wsdl:output message="tns:ModificarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuario">
+      <wsdl:input message="tns:BuscarUsuarioSoapIn" />
+      <wsdl:output message="tns:BuscarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Listavuelosxml">
+      <wsdl:input message="tns:ListavuelosxmlSoapIn" />
+      <wsdl:output message="tns:ListavuelosxmlSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SerializarCliente">
+      <soap:operation soapAction="http://tempuri.org/SerializarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SerializarAdmin">
+      <soap:operation soapAction="http://tempuri.org/SerializarAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaAeropuerto">
+      <soap:operation soapAction="http://tempuri.org/AltaAeropuerto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAeropuerto">
+      <soap:operation soapAction="http://tempuri.org/BuscarAeropuerto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAeropuerto">
+      <soap:operation soapAction="http://tempuri.org/ListarAeropuerto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaAeropuerto">
+      <soap:operation soapAction="http://tempuri.org/BajaAeropuerto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAero">
+      <soap:operation soapAction="http://tempuri.org/ModificarAero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAeropuertoCiudadPartida">
+      <soap:operation soapAction="http://tempuri.org/ListarAeropuertoCiudadPartida" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaLineas">
+      <soap:operation soapAction="http://tempuri.org/AltaLineas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarLineas">
+      <soap:operation soapAction="http://tempuri.org/BuscarLineas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarLineas">
+      <soap:operation soapAction="http://tempuri.org/ListarLineas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaLineas">
+      <soap:operation soapAction="http://tempuri.org/BajaLineas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarLineas">
+      <soap:operation soapAction="http://tempuri.org/ModificarLineas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaVuelos">
+      <soap:operation soapAction="http://tempuri.org/AltaVuelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarVuelo">
+      <soap:operation soapAction="http://tempuri.org/BuscarVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarVuelo">
+      <soap:operation soapAction="http://tempuri.org/ListarVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaVuelo">
+      <soap:operation soapAction="http://tempuri.org/BajaVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarVuelo">
+      <soap:operation soapAction="http://tempuri.org/ModificarVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reserva">
+      <soap:operation soapAction="http://tempuri.org/Reserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListAeroPartidados">
+      <soap:operation soapAction="http://tempuri.org/ListAeroPartidados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logueo">
+      <soap:operation soapAction="http://tempuri.org/Logueo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaUsuario">
+      <soap:operation soapAction="http://tempuri.org/AltaUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaUsuario">
+      <soap:operation soapAction="http://tempuri.org/BajaUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ModificarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuario">
+      <soap:operation soapAction="http://tempuri.org/BuscarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Listavuelosxml">
+      <soap:operation soapAction="http://tempuri.org/Listavuelosxml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SerializarCliente">
+      <soap12:operation soapAction="http://tempuri.org/SerializarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SerializarAdmin">
+      <soap12:operation soapAction="http://tempuri.org/SerializarAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaAeropuerto">
+      <soap12:operation soapAction="http://tempuri.org/AltaAeropuerto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAeropuerto">
+      <soap12:operation soapAction="http://tempuri.org/BuscarAeropuerto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAeropuerto">
+      <soap12:operation soapAction="http://tempuri.org/ListarAeropuerto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaAeropuerto">
+      <soap12:operation soapAction="http://tempuri.org/BajaAeropuerto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAero">
+      <soap12:operation soapAction="http://tempuri.org/ModificarAero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAeropuertoCiudadPartida">
+      <soap12:operation soapAction="http://tempuri.org/ListarAeropuertoCiudadPartida" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaLineas">
+      <soap12:operation soapAction="http://tempuri.org/AltaLineas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarLineas">
+      <soap12:operation soapAction="http://tempuri.org/BuscarLineas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarLineas">
+      <soap12:operation soapAction="http://tempuri.org/ListarLineas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaLineas">
+      <soap12:operation soapAction="http://tempuri.org/BajaLineas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarLineas">
+      <soap12:operation soapAction="http://tempuri.org/ModificarLineas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaVuelos">
+      <soap12:operation soapAction="http://tempuri.org/AltaVuelos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarVuelo">
+      <soap12:operation soapAction="http://tempuri.org/BuscarVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarVuelo">
+      <soap12:operation soapAction="http://tempuri.org/ListarVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaVuelo">
+      <soap12:operation soapAction="http://tempuri.org/BajaVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarVuelo">
+      <soap12:operation soapAction="http://tempuri.org/ModificarVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reserva">
+      <soap12:operation soapAction="http://tempuri.org/Reserva" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListAeroPartidados">
+      <soap12:operation soapAction="http://tempuri.org/ListAeroPartidados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logueo">
+      <soap12:operation soapAction="http://tempuri.org/Logueo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaUsuario">
+      <soap12:operation soapAction="http://tempuri.org/AltaUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaUsuario">
+      <soap12:operation soapAction="http://tempuri.org/BajaUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ModificarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/BuscarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Listavuelosxml">
+      <soap12:operation soapAction="http://tempuri.org/Listavuelosxml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://waldemar-pc/ServicioWeb/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://waldemar-pc/ServicioWeb/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
